@@ -1,0 +1,42 @@
+CQRS-ES> dotnet new classlib -o CQRS.Core 
+
+SM-Post> dotnet new sln
+
+SM-Post> dotnet new classlib -o Post.Common
+
+SM-Post\Post.CMD> dotnet new webapi -o Post.Cmd.Api
+SM-Post\Post.CMD> dotnet new classlib -o Post.Cmd.Domain
+SM-Post\Post.CMD> dotnet new classlib -o Post.Cmd.Infrastructure
+
+
+SM-Post\Post.Query> dotnet new classlib -o Post.Query.Domain
+SM-Post\Post.Query> dotnet new classlib -o Post.Query.Infrastructure
+
+SM-Post> dotnet sln add ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj
+
+SM-Post> dotnet sln add ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj
+
+SM-Post> dotnet sln add .\Post.CMD\Post.Cmd.Api\Post.Cmd.Api.csproj
+SM-Post> dotnet sln add .\Post.CMD\Post.Cmd.Domain\Post.Cmd.Domain.csproj
+SM-Post> dotnet sln add .\Post.CMD\Post.Cmd.Infrastructure\Post.Cmd.Infrastructure.csproj
+
+SM-Post> dotnet sln add .\Post.Query\Post.Query.Api\Post.Query.Api.csproj
+SM-Post> dotnet sln add .\Post.Query\Post.Query.Domain\Post.Query.Domain.csproj
+SM-Post> dotnet sln add .\Post.Query\Post.Query.Infrastructure\Post.Query.Infrastructure.csproj
+
+
+### Adding References
+
+Services\SM-Post> dotnet add Post.Cmd\Post.Cmd.Api\Post.Cmd.Api.csproj reference ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj   
+Services\SM-Post> dotnet add Post.Cmd\Post.Cmd.Api\Post.Cmd.Api.csproj reference .\Post.CMD\Post.Cmd.Infrastructure\Post.Cmd.Infrastructure.csproj
+Services\SM-Post> dotnet add Post.Cmd\Post.Cmd.Api\Post.Cmd.Api.csproj reference .\Post.CMD\Post.Cmd.Domain\Post.Cmd.Domain.csproj
+Services\SM-Post> dotnet add Post.Cmd\Post.Cmd.Api\Post.Cmd.Api.csproj reference ..\Post.Common\Post.Common.csproj
+
+Services\SM-Post> dotnet add .\Post.CMD\Post.Cmd.Domain\Post.Cmd.Domain.csproj reference ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj
+
+Services\SM-Post> dotnet add .\Post.CMD\Post.Cmd.Infrastructure\Post.Cmd.Infrastructure.csproj reference ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj
+Services\SM-Post> dotnet add .\Post.CMD\Post.Cmd.Infrastructure\Post.Cmd.Infrastructure.csproj reference .\Post.CMD\Post.Cmd.Domain\Post.Cmd.Domain.csproj
+Services\SM-Post> dotnet add .\Post.Common\Post.Common.csproj reference ..\CQRS-ES\CQRS.Core\CQRS.Core.csproj
+
+...
+
