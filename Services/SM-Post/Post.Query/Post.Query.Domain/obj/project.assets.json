@@ -826,11 +826,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
       "projectName": "Post.Query.Domain",
-      "projectPath": "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
+      "projectPath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
       "packagesPath": "C:\\Users\\excel\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\obj\\",
+      "outputPath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\excel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -850,8 +850,8 @@
             "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\CQRS-ES\\CQRS.Core\\CQRS.Core.csproj": {
               "projectPath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\CQRS-ES\\CQRS.Core\\CQRS.Core.csproj"
             },
-            "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Common\\Post.Common.csproj": {
-              "projectPath": "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Common\\Post.Common.csproj"
+            "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Common\\Post.Common.csproj": {
+              "projectPath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Common\\Post.Common.csproj"
             }
           }
         }

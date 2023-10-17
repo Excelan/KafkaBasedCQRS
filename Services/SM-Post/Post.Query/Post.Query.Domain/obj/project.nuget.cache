@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n4jMxNv4xgrwqa70n4uPpuQ1LebBbhS+egs26FtXNu+35VMhbl+2wyWNjgdPFIshM/yA4ji+gCSqNZH8QfRw/w==",
+  "dgSpecHash": "d0oytyEP4CdbHnheyhIjIvpbcWalCzrgI3OkTrWdmUpDYa24rkM8sSxzldUNqG8HiS7KAdabnMmcTd2tbyJkPw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
+  "projectFilePath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Domain\\Post.Query.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\excel\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\excel\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

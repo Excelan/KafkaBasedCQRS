@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wJPxBSLpP6vDESNZDOQnwjFFtuaE/OvNOaIJZzxz2RQYYfI7f+9FYjGOiKg1Gkrx7n3MGePL6P550DrqW13U1A==",
+  "dgSpecHash": "00iQdgQmLzM0cc/NVZyCAaTv2i/c9YWormEvoYH6rnE96wNq+Gf7IObdl/NgN19lEPwoNMaMV5olpkAs1i0i/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\excel\\source\\repos\\Kafka.NET\\Services\\SM-Post\\Post.Query\\Post.Query.Infrastructure\\Post.Query.Infrastructure.csproj",
   "expectedPackageFiles": [
