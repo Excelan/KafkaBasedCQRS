@@ -1,4 +1,6 @@
 bin
 obj
-Packages
+packages
+*.suo
+*.user
 .vs
