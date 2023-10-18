@@ -4,7 +4,7 @@ using CQRS.Core.Events;
 
 public abstract class AggregateRoot
 {
-    private static string _applyMethodName= "Apply";
+    private static readonly string _applyMethodName= "Apply";
     private readonly List<BaseEvent> _changes = new();
 
     protected Guid _id;
@@ -16,14 +16,9 @@ public abstract class AggregateRoot
     private void MarkChangesAsCommited() => _changes.Clear();
 
     private void ApplyChange(BaseEvent @event) {
-        var aggregateType = GetType();
         var eventType = @event.GetType();
-        var method = aggregateType.GetMethod(_applyMethodName, new[] { eventType });
-        if (method is null) {
-            throw new ArgumentException($"The {aggregateType.Name} " +
-                $"contains no ${_applyMethodName} " +
-                $"that takes {eventType.Name} arguments");
-        }
+        var method = GetType().GetMethod(_applyMethodName, new[] { eventType }) 
+            ?? throw new ArgumentException($"Can not apply changes for the event of type {eventType.Name}");
         method.Invoke(this, new object[] { @event });
     }
 
@@ -32,11 +27,11 @@ public abstract class AggregateRoot
         RegisterUncommitedChange(@event);
     }
 
-    public IEnumerable<BaseEvent> GetUncommitedChanges => _changes;
-
     public void ReplyEvents(IEnumerable<BaseEvent> events) {
         foreach (var @event in events) {
             ApplyChange(@event);
         }
     }
+
+    public IEnumerable<BaseEvent> GetUncommitedChanges => _changes;
 }
