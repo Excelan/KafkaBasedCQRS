@@ -3,13 +3,17 @@
 using CQRS.Core.Domain;
 using Post.Common.Events;
 
-internal class PostAggregate : AggregateRoot
+public class PostAggregate : AggregateRoot
 {
     private bool _isActive;
     private string? _author;
     private readonly Dictionary<Guid, Tuple<string, string>> _comments = new();
 
     public bool Active { get => _isActive; set => _isActive = value; }
+
+    public PostAggregate()
+    {
+    }
 
     public PostAggregate(Guid id, string author, string message) {
         if (string.IsNullOrEmpty(author)) {

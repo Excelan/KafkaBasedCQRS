@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Post.Cmd.Infrastructure.Config;
 
-internal class EventStoreRepository : IEventStoreRepository
+public class EventStoreRepository : IEventStoreRepository
 {
     private readonly IMongoCollection<EventModel> _eventStoreCollection;
     public EventStoreRepository(IOptions<MongoDbConfig> config)
@@ -19,11 +19,14 @@ internal class EventStoreRepository : IEventStoreRepository
         _eventStoreCollection = mongoDatabase.GetCollection<EventModel>(config.Value.Collection);
     }
 
-    public Task<List<EventModel>> FindAggregateById(Guid aggregateId) {
-        throw new NotImplementedException();
+    public async Task<List<EventModel>> FindAggregateById(Guid aggregateId) {
+        return await _eventStoreCollection
+            .Find(x => x.AggregateIdentifier == aggregateId)
+            .ToListAsync()
+            .ConfigureAwait(false);
     }
 
-    public Task SaveAsync(EventModel @event) {
-        throw new NotImplementedException();
+    public async Task SaveAsync(EventModel @event) {
+        await _eventStoreCollection.InsertOneAsync(@event).ConfigureAwait(false);
     }
 }

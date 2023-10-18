@@ -13,7 +13,6 @@ public abstract class AggregateRoot
     public int Version { get; set; } = -1;
 
     private void RegisterUncommitedChange(BaseEvent @event) => _changes.Add(@event);
-    private void MarkChangesAsCommited() => _changes.Clear();
 
     private void ApplyChange(BaseEvent @event) {
         var eventType = @event.GetType();
@@ -33,5 +32,7 @@ public abstract class AggregateRoot
         }
     }
 
-    public IEnumerable<BaseEvent> GetUncommitedChanges => _changes;
+    public IEnumerable<BaseEvent> GetUncommitedChanges() => _changes;
+
+    public void MarkChangesAsCommited() => _changes.Clear();
 }
