@@ -1,24 +1,23 @@
-﻿using System.Runtime.Serialization;
+﻿namespace CQRS.Core.Exceptions;
 
-namespace CQRS.Core.Exceptions
+using System.Runtime.Serialization;
+
+[Serializable]
+public class ConcurrencyException : Exception
 {
-    [Serializable]
-    public class ConcurrencyException : Exception
+    public ConcurrencyException()
     {
-        public ConcurrencyException()
-        {
-        }
+    }
 
-        public ConcurrencyException(string? message) : base(message)
-        {
-        }
+    public ConcurrencyException(string? message) : base(message)
+    {
+    }
 
-        public ConcurrencyException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
+    public ConcurrencyException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
 
-        protected ConcurrencyException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+    protected ConcurrencyException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
     }
 }

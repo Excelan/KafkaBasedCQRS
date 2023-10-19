@@ -1,10 +1,9 @@
-﻿namespace Post.Cmd.Infrastructure.Config
-{
-    public sealed class MongoDbConfig
-    {
-        public string ConnectionString { get; set; }
-        public string Database { get; set; }
+﻿namespace Post.Cmd.Infrastructure.Config;
 
-        public string Collection { get; set; }
-    }
+public sealed class MongoDbConfig
+{
+    public string ConnectionString { get; set; }
+    public string Database { get; set; }
+
+    public string Collection { get; set; }
 }
