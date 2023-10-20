@@ -4,15 +4,17 @@ using CQRS.Core.Domain;
 using CQRS.Core.Events;
 using CQRS.Core.Exceptions;
 using CQRS.Core.Infrastructure;
+using CQRS.Core.Producesrs;
 using Post.Cmd.Domain.Aggregates;
 
 public class EventStore : IEventStore
 {
     private readonly IEventStoreRepository _eventStoreRepository;
+    private readonly IEventProducer _eventProducer;
 
-    public EventStore(IEventStoreRepository eventStoreRepository)
-    {
+    public EventStore(IEventStoreRepository eventStoreRepository, IEventProducer eventProducer) {
         _eventStoreRepository = eventStoreRepository;
+        _eventProducer = eventProducer;
     }
 
     public async Task<List<BaseEvent>> GetEventsAsync(Guid aggregateId) {
@@ -43,7 +45,14 @@ public class EventStore : IEventStore
                 EventData = @event
             };
 
+            // This region could be placed into a transaction.
+            // However MongoDB supports transactions ONLY if its is run as a replica set.
+            #region
             await _eventStoreRepository.SaveAsync(eventModel);
+            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+            await _eventProducer.ProduceAsync(topic, @event);
+            #endregion
+
         }
     }
 }

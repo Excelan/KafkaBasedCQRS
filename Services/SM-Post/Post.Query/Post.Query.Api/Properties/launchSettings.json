@@ -14,9 +14,12 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5213",
+      // "applicationUrl": "http://localhost:5213",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        // instead of .code/launch.json
+        "ASPNETCORE_URLS": "http://localhost:5010",
+        "KAFKA_TOPIC": "SocialMediaPostEvents"
       }
     },
     "https": {
