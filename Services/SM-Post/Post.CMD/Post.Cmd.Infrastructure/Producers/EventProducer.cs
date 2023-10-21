@@ -7,7 +7,7 @@ using CQRS.Core.Events;
 using CQRS.Core.Producesrs;
 using Microsoft.Extensions.Options;
 
-internal class EventProducer : IEventProducer
+public class EventProducer : IEventProducer
 {
     private readonly ProducerConfig _config;
 

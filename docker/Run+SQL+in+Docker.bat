@@ -1,0 +1,1 @@
+docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_PID=Express" -e "SA_PASSWORD=$tr0ngS@P@ssw0rd02" --name sql-container --network excelan-docker-bridge-network --restart always -p 1433:1433 mcr.microsoft.com/mssql/server:2019-latest
