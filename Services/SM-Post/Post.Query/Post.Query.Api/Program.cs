@@ -12,8 +12,8 @@ Action<DbContextOptionsBuilder> configureDbContext = o =>
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton(new DatabaseContextFactory(configureDbContext));
 
-var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
-dataContext.Database.EnsureCreated();
+//var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
+//dataContext.Database.EnsureCreated();
 
 
 builder.Services.AddControllers();
@@ -22,6 +22,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+var dataContext = app.Services.GetRequiredService<DatabaseContext>();
+dataContext.Database.EnsureCreated();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

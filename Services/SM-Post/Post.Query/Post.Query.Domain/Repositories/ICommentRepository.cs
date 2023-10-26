@@ -1,10 +1,10 @@
 ﻿using Post.Query.Domain.Entities;
 
 namespace Post.Query.Domain.Repositories;
-internal interface ICommentRepository
+public interface ICommentRepository
 {
-    Task CreateAsync(CommentEntity entity);
-    Task UpdateAsync(CommentEntity entity);
-    Task<CommentEntity> GetByIdAsync(Guid commentId);
+    Task CreateAsync(CommentEntity comment);
+    Task UpdateAsync(CommentEntity comment);
+    Task<CommentEntity?> GetByIdAsync(Guid commentId);
     Task DeleteAsync (Guid commentId);
 }
