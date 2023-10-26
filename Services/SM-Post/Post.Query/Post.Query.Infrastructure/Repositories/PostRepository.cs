@@ -39,34 +39,34 @@ internal class PostRepository : IPostRepository
     public async Task<List<PostEntity>> ListAllAsync() {
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
-            .AsNoTracking()
             .Include(p => p.Comments)
+            .AsNoTracking()
             .ToListAsync();
     }
 
     public async Task<List<PostEntity>> ListByAuthorAsync(string author) {
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
-            .AsNoTracking()
             .Where(x => x.Author.Equals(author, StringComparison.InvariantCultureIgnoreCase))
             .Include(p => p.Comments)
+            .AsNoTracking()
             .ToListAsync();
     }
 
     public async Task<List<PostEntity>> ListWithCommentsAsync() {
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
-            .AsNoTracking()
             .Where(x => x.Comments.Any())
             .Include(p => p.Comments)
+            .AsNoTracking()
             .ToListAsync();
     }
 
     public async Task<List<PostEntity>> ListWithLikesAsync(int numberOfLikes) {
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
-            .AsNoTracking()
             .Where(x => x.Likes >= numberOfLikes)
+            .AsNoTracking()
             .ToListAsync();
     }
 
