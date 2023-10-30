@@ -8,7 +8,7 @@ using Post.Query.Domain.Entities;
 using Post.Query.Domain.Repositories;
 using Post.Query.Infrastructure.DataAccess;
 
-internal class CommentRepository : ICommentRepository
+public class CommentRepository : ICommentRepository
 {
     private readonly DatabaseContextFactory _contextFactory;
 

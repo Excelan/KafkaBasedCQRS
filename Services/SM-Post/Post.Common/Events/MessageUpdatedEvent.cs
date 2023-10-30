@@ -2,9 +2,9 @@
 
 namespace Post.Common.Events;
 
-public sealed class MessageUpdatedEvent : BaseEvent
+public class MessageUpdatedEvent : BaseEvent
 {
-    public string? Message { get; set; }
+    public required string Message { get; set; }
 
     public MessageUpdatedEvent() : base(nameof(MessageUpdatedEvent)) {
     }

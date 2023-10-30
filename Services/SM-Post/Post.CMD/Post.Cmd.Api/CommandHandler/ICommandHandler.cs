@@ -1,4 +1,6 @@
-﻿namespace Post.Cmd.Api.Commands;
+﻿using Post.Cmd.Api.Commands;
+
+namespace Post.Cmd.Api.CommandHandler;
 
 public interface ICommandHandler
 {
@@ -10,6 +12,4 @@ public interface ICommandHandler
     Task HandleAsync(AddCommentCommand command);
     Task HandleAsync(EditCommentCommand command);
     Task HandleAsync(RemoveCommentCommand command);
-
-
 }

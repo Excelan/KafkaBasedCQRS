@@ -1,6 +1,6 @@
 namespace CQRS.Core.Messages;
 
-public abstract class Message
+public class Message
 {
     public Guid Id { get; set; }
 }

@@ -49,7 +49,7 @@ public class EventStore : IEventStore
             // However MongoDB supports transactions ONLY if its is run as a replica set.
             #region
             await _eventStoreRepository.SaveAsync(eventModel);
-            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC") ?? throw new ApplicationException("Environment variable [KAFKA_TOPIC] is not found.");
             await _eventProducer.ProduceAsync(topic, @event);
             #endregion
 
