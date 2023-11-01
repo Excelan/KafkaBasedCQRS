@@ -123,14 +123,14 @@ public class PostAggregate : AggregateRoot
             throw new ArgumentException($"'{nameof(userName)}' cannot be null or whitespace.", nameof(userName));
         }
 
-        if (_comments[commentId].Item2.Equals(userName, StringComparison.InvariantCultureIgnoreCase)) {
+        if (!_comments[commentId].Item2.Equals(userName, StringComparison.InvariantCultureIgnoreCase)) {
             throw new InvalidOperationException("You are not allowed to change a comment of another user.");
         }
 
         RaiseEvent(new CommentUpdatedEvent {
             Id = _id,
             Comment = comment,
-            CommentId = Guid.NewGuid(),
+            CommentId = commentId,
             Username = userName,
             EditDate = DateTime.UtcNow
         });
@@ -158,7 +158,7 @@ public class PostAggregate : AggregateRoot
             throw new ArgumentException($"'{nameof(username)}' cannot be null or whitespace.", nameof(username));
         }
 
-        if (_comments[commentId].Item2.Equals(username, StringComparison.InvariantCultureIgnoreCase)) {
+        if (!_comments[commentId].Item2.Equals(username, StringComparison.InvariantCultureIgnoreCase)) {
             throw new InvalidOperationException("You are not allowed to change a comment of another user.");
         }
 
@@ -182,7 +182,7 @@ public class PostAggregate : AggregateRoot
             throw new ArgumentException($"'{nameof(username)}' cannot be null or whitespace.", nameof(username));
         }
 
-        if (username.Equals(_author, StringComparison.InvariantCultureIgnoreCase)) {
+        if (!username.Equals(_author, StringComparison.InvariantCultureIgnoreCase)) {
             throw new InvalidOperationException("You are not allowed to delete a post of another user.");
         }
 

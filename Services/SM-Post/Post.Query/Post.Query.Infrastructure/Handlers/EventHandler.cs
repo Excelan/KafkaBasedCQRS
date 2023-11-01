@@ -56,7 +56,7 @@ public class EventHandler: IEventHandler
     }
 
     public async Task On(CommentUpdatedEvent @event) {
-        var comment = await _commentRepository.GetByIdAsync(@event.Id);
+        var comment = await _commentRepository.GetByIdAsync(@event.CommentId);
         if (comment == null) return;
         comment.Comment = @event.Comment;
         comment.IsEdited = true;
