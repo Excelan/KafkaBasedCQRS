@@ -26,6 +26,13 @@ public class EventStoreRepository : IEventStoreRepository
             .ConfigureAwait(false);
     }
 
+    public async Task<List<EventModel>> FindAllAsync() {
+        return await _eventStoreCollection
+            .Find(x => true)
+            .ToListAsync()
+            .ConfigureAwait(false);
+    }
+
     public async Task SaveAsync(EventModel @event) {
         await _eventStoreCollection.InsertOneAsync(@event).ConfigureAwait(false);
     }

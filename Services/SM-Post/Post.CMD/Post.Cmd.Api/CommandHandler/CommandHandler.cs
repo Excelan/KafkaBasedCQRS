@@ -63,4 +63,8 @@ public class CommandHandler : ICommandHandler
         aggragate.RemoveComment(command.CommentId, command.Username);
         await _eventSourcingHandler.SaveAsync(aggragate);
     }
+
+    public async Task HandleAsync(RestoreReadDbCommand command) {
+        await _eventSourcingHandler.RepublishEventsAsync();
+    }
 }

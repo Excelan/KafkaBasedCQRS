@@ -47,7 +47,7 @@ public class PostRepository : IPostRepository
     public async Task<List<PostEntity>> ListByAuthorAsync(string author) {
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
-            .Where(x => x.Author.Equals(author, StringComparison.InvariantCultureIgnoreCase))
+            .Where(x => x.Author.Equals(author))
             .Include(p => p.Comments)
             .AsNoTracking()
             .ToListAsync();
@@ -66,6 +66,7 @@ public class PostRepository : IPostRepository
         using var context = _contextFactory.CreateDbContext();
         return await context.Posts
             .Where(x => x.Likes >= numberOfLikes)
+            .Include(p => p.Comments)
             .AsNoTracking()
             .ToListAsync();
     }

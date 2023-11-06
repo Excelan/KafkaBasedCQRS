@@ -55,4 +55,12 @@ public class EventStore : IEventStore
 
         }
     }
+
+    public async Task<List<Guid>> GetAggregateIdsAsync() {
+        var eventStream = await _eventStoreRepository.FindAllAsync();
+        if (eventStream is null || !eventStream.Any()) {
+            throw new ArgumentNullException(nameof(eventStream), "Could not retrieve events from the event store.");
+        }
+        return eventStream.Select(x => x.AggregateIdentifier).Distinct().ToList();
+    }
 }
